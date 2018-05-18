@@ -95,6 +95,11 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
         return item.id
     }
 
+    selectOrder = () => {
+        let info = this.props.navigation.state.params.info
+        this.props.navigation.navigate('PurchaseOrder', {info: info})
+    }
+
     renderHeader = () => {
         let info = this.props.navigation.state.params.info
 
@@ -112,6 +117,7 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
                             title='立即抢购'
                             titleStyle={{color: 'white', fontSize: 18}}
                             style={styles.buyButton}
+                            onPress={ this.selectOrder }
                         />
                     </View>
                 </View>

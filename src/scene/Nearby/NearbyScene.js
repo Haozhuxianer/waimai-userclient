@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#eeeeee',
-        alignSelf: 'flex-end',
+        // alignSelf: 'flex-end',
         marginRight: 20,
     },
     searchIcon: {

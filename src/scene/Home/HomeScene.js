@@ -51,7 +51,7 @@ class HomeScene extends PureComponent<Props, State> {
         ),
         headerLeft: (
             <NavigationItem
-                title='福州'
+                title='武汉'
                 titleStyle={{color: 'white'}}
                 onPress={() => {
 
@@ -163,7 +163,7 @@ class HomeScene extends PureComponent<Props, State> {
     }
 
     onMenuSelected = (index: number) => {
-        alert(index)
+        alert("该服务暂未开放，敬请期待！")
     }
 
     render() {

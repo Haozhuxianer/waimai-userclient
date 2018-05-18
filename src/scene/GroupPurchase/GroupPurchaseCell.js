@@ -22,7 +22,7 @@ type Props = {
 
 
 class GroupPurchaseCell extends PureComponent<Props> {
-
+    
     render() {
         let {info} = this.props
         let imageUrl = info.imageUrl.replace('w.h', '160.0')

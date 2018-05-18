@@ -24,6 +24,10 @@ import WebScene from './widget/WebScene'
 import GroupPurchaseScene from './scene/GroupPurchase/GroupPurchaseScene'
 import GroupPurchaseOrderScene from './scene/GroupPurchase/GroupPurchaseOrderScene'
 
+import DebugScene from './scene/common/DebugScene'
+import LoginScene from './scene/common/LoginScene'
+import RegisterScene from './scene/common/RegisterScene'
+
 const lightContentScenes = ['Home', 'Mine']
 
 function getCurrentRouteName(navigationState: any) {
@@ -149,6 +153,9 @@ const Navigator = StackNavigator(
         Web: {screen: WebScene},
         GroupPurchase: {screen: GroupPurchaseScene},
         PurchaseOrder: {screen: GroupPurchaseOrderScene},
+        Debug: {screen: DebugScene},
+        Login: {screen: LoginScene},
+        Register: {screen: RegisterScene},
     },
     {
         navigationOptions: {

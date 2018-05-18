@@ -15,7 +15,7 @@ import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
 
 type Props = {
-
+    navigation: any,
 }
 
 type State = {
@@ -30,7 +30,7 @@ class MineScene extends PureComponent<Props, State> {
                 <NavigationItem
                     icon={require('../../img/mine/icon_navigation_item_set_white.png')}
                     onPress={() => {
-
+                        navigation.navigate('Debug');
                     }}
                 />
                 <NavigationItem
@@ -75,7 +75,7 @@ class MineScene extends PureComponent<Props, State> {
             let sublist = dataList[i]
             for (let j = 0; j < sublist.length; j++) {
                 let data = sublist[j]
-                let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title} />
+                let cell = <DetailCell image={data.image} title={data.title} subtitle={data.subtitle} key={data.title} onPress={() => {alert('hello');}}/>
                 cells.push(cell)
             }
             cells.push(<SpacingView key={i} />)

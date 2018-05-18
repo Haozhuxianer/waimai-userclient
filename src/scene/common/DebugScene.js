@@ -5,7 +5,7 @@
 import React, {PureComponent} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import {screen, system} from '../../common'
-import { Button } from '../../widget';
+import { Button, color } from '../../widget';
 
 type Props = {
     navigation: any,
@@ -34,10 +34,12 @@ class DebugScene extends PureComponent<Props, State> {
         return (
             <View style={styles.container}>
             <Button
+                style={styles.button}
                 title = 'Debug_Login'
                 onPress={this.goToLoginScene}
             />
             <Button
+                style={styles.button}
                 title = 'Debug_Register'
                 onPress={this.goToRegisterSceme}
             />
@@ -59,6 +61,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    button: {
+        backgroundColor: color.paper,
+        marginRight: 10,
+        marginLeft: 10,
+        marginTop: 10,
+        height: 40, 
+        borderRadius: 7,
+    }
 })
 
 export default DebugScene

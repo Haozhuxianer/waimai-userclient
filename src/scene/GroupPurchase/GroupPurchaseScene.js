@@ -73,7 +73,7 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
             let dataList = json.data.deals.map((info) => {
                 return {
                     id: info.id,
-                    imageUrl: info.imgurl,
+                    imageurl: info.imgurl,
                     title: info.brandname,
                     subtitle: `[${info.range}]${info.title}`,
                     price: info.price
@@ -106,7 +106,7 @@ class GroupPurchaseScene extends PureComponent<Props, State> {
         return (
             <View>
                 <View>
-                    <Image style={styles.banner} source={{uri: info.imageUrl.replace('w.h', '480.0')}} />
+                    <Image style={styles.banner} source={{uri: info.imageurl.replace('w.h', '480.0')}} />
 
                     <View style={styles.topContainer}>
                         <Heading2 style={{color: color.primary}}>￥</Heading2>

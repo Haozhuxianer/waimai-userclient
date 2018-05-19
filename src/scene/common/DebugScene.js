@@ -6,6 +6,7 @@ import React, {PureComponent} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import {screen, system} from '../../common'
 import { Button, color } from '../../widget';
+import api from '../../api';
 
 type Props = {
     navigation: any,
@@ -43,6 +44,11 @@ class DebugScene extends PureComponent<Props, State> {
                 title = 'Debug_Register'
                 onPress={this.goToRegisterSceme}
             />
+            <Button
+                style={styles.button}
+                title = 'Debug_Register'
+                onPress={this.fetchData}
+            />
             </View>
         )
     }
@@ -53,6 +59,14 @@ class DebugScene extends PureComponent<Props, State> {
 
     goToRegisterSceme = () => {
         this.props.navigation.navigate('Register');
+    }
+
+    fetchData = () => {
+        // try{
+            
+        // } catch(err) {
+        //     console.log('fetch err')
+        // }
     }
 
 }

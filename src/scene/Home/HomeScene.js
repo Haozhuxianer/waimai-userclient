@@ -86,21 +86,10 @@ class HomeScene extends PureComponent<Props, State> {
         try {
             let response = await fetch(api.recommend)
             let json = await response.json()
-
-            let dataList = json.data.map(
-                (info) => {
-                    return {
-                        id: info.id,
-                        imageUrl: info.squareimgurl,
-                        title: info.mname,
-                        subtitle: `[${info.range}]${info.title}`,
-                        price: info.price
-                    }
-                }
-            )
+            console.log(json);
 
             this.setState({
-                dataList: dataList,
+                dataList: json,
                 refreshing: false,
             })
         } catch (error) {

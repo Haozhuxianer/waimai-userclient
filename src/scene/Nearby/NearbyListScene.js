@@ -52,20 +52,11 @@ class NearbyListScene extends PureComponent<Props, State> {
 
         console.log(JSON.stringify(json))
 
-        let dataList = json.data.map((info) => {
-            return {
-                id: info.id,
-                imageUrl: info.squareimgurl,
-                title: info.mname,
-                subtitle: `[${info.range}]${info.title}`,
-                price: info.price
-            }
-        })
 
         // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
-        dataList.sort(() => {return 0.5 - Math.random()})
+        json.sort(() => {return 0.5 - Math.random()})
 
-        return dataList
+        return json
     }
 
     requestFirstPage = async () => {

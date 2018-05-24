@@ -73,7 +73,7 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
         return (
             <View style={styles.container}>
                 <Text>id : {info.id}</Text>
-                <Image style={styles.banner} source={{uri: info.imageUrl.replace('w.h', '480.0')}}/>
+                <Image style={styles.banner} source={{uri: info.imageurl.replace('w.h', '480.0')}}/>
                 <Text>url : {info.imageUrl}</Text>
                 <Text>brandname: {info.title}</Text>
                 <Button 

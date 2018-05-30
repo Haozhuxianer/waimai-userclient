@@ -46,7 +46,7 @@ class DebugScene extends PureComponent<Props, State> {
             />
             <Button
                 style={styles.button}
-                title = 'Debug_Register'
+                title = 'Debug_Address'
                 onPress={this.fetchData}
             />
             </View>
@@ -62,6 +62,7 @@ class DebugScene extends PureComponent<Props, State> {
     }
 
     fetchData = () => {
+        this.props.navigation.navigate('Address');
         // try{
             
         // } catch(err) {

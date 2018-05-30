@@ -24,6 +24,8 @@ import DebugScene from './scene/common/DebugScene'
 import LoginScene from './scene/common/LoginScene'
 import RegisterScene from './scene/common/RegisterScene'
 
+import AddressScene from './scene/Mine/AddressScene'
+
 const lightContentScenes = ['Home', 'Mine']
 
 function getCurrentRouteName(navigationState: any) {
@@ -152,6 +154,7 @@ const Navigator = StackNavigator(
         Debug: {screen: DebugScene},
         Login: {screen: LoginScene},
         Register: {screen: RegisterScene},
+        Address: {screen: AddressScene},
     },
     {
         navigationOptions: {
@@ -160,6 +163,7 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
+        initialRouteName: 'Address',
     }
 )
 

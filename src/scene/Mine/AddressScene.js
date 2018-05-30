@@ -9,6 +9,7 @@ import {View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, FlatList} fr
 import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
+import AddressCell from './AddressCell'
 
 type Props = {
     navigation: any,
@@ -60,9 +61,10 @@ class AddressScene extends PureComponent<Props,State>{
 
     renderCell = (dataList: Object) => {
         return (
-            <View style={styles.cellcontainer}>
-                <Text>{dataList.item.text}</Text>
-            </View>
+            <AddressCell
+                data={dataList.item}
+                onPress={(data) => {}}
+            />
         )
     }
 
@@ -71,9 +73,7 @@ class AddressScene extends PureComponent<Props,State>{
     }
 
     render() {
-        let dataList = [{id: 1, text: "hello"},{id: 2, text: "hello"},{id: 3, text: "hello"},
-        {id: 4, text: "hello"},{id: 5, text: "hello"},{id: 6, text: "hello"},{id: 7, text: "hello"},
-        {id: 8, text: "hello"},{id: 9, text: "hello"}]
+        let dataList = [{id:1, name: "语文卷", gender: '男士', address: '新苑四栋', tel: '17671732097'}]
         return (
             <View style={styles.constainer}>
                 <FlatList

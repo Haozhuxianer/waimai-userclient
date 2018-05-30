@@ -43,7 +43,7 @@ class AddressScene extends PureComponent<Props,State>{
 
     renderHeader = () => {
         return (
-            <TouchableOpacity onPress={() => {alert("renderHeader")}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate('UAddress')}}>
                 <SpacingView />
                 <View style={{flexDirection: 'row',backgroundColor: 'white', alignItems: 'center',padding: 15}}>
                     <Image style={{width:25, height:25}} source={require('../../img/public/icon_add.png')}/>

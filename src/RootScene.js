@@ -25,6 +25,7 @@ import LoginScene from './scene/common/LoginScene'
 import RegisterScene from './scene/common/RegisterScene'
 
 import AddressScene from './scene/Mine/AddressScene'
+import UpdateAddressScene from './scene/Mine/UpdateAddressScene'
 
 const lightContentScenes = ['Home', 'Mine']
 
@@ -155,6 +156,7 @@ const Navigator = StackNavigator(
         Login: {screen: LoginScene},
         Register: {screen: RegisterScene},
         Address: {screen: AddressScene},
+        UAddress: {screen: UpdateAddressScene}
     },
     {
         navigationOptions: {
@@ -163,7 +165,7 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
-        initialRouteName: 'Address',
+        initialRouteName: 'UAddress',
     }
 )
 

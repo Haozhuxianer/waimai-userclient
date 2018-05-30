@@ -10,13 +10,16 @@ import {Heading2, Heading3, Paragraph} from '../../widget/Text'
 import {screen, system} from '../../common'
 import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
 import AddressCell from './AddressCell'
+import Realm from 'realm'
+import model from '../../common/modelScheme'
 
 type Props = {
     navigation: any,
 }
 
 type State = {
-
+    dataList: Array<Object>,
+    refreshing: boolean,
 }
 
 
@@ -38,8 +41,25 @@ class AddressScene extends PureComponent<Props,State>{
         super(props)
 
         this.state = {
-
+            dataList: [],
+            refreshing: false,
         }
+    }
+
+    componentDidMount() {
+        this.setState({refreshing:true})
+        this.getDataFromRealm()
+    }
+
+    getDataFromRealm = async ()  =>{
+        Realm.open({schema: [model.AddressInfoScheme]})
+        .then(realm => {
+            let data = realm.objects('AddressInfo')
+            this.setState({dataList: data, refreshing: false})
+        }).catch(err => {
+            this.setState({refreshing:false})
+            console.log(err)
+        })
     }
 
     renderHeader = () => {
@@ -74,14 +94,16 @@ class AddressScene extends PureComponent<Props,State>{
     }
 
     render() {
-        let dataList = [{id:1, name: "语文卷", gender: '男士', address: '新苑四栋', tel: '17671732097'}]
+        // let dataList = [{id:1, name: "语文卷", gender: '男士', address: '新苑四栋', tel: '17671732097'}]
         return (
             <View style={styles.constainer}>
                 <FlatList
-                    data={dataList}
+                    data={this.state.dataList}
                     renderItem={this.renderCell}
                     keyExtractor={this._keyExtractor}
                     ListHeaderComponent={this.renderHeader}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.getDataFromRealm}
                 />
             </View>
         )

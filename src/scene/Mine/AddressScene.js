@@ -63,7 +63,8 @@ class AddressScene extends PureComponent<Props,State>{
         return (
             <AddressCell
                 data={dataList.item}
-                onPress={(data) => {}}
+                onPressEdit={(data) => {alert('edite')}}
+                onPressSelect={() => {alert('selecter')}}
             />
         )
     }

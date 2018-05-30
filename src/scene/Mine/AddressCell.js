@@ -12,7 +12,8 @@ import {color, DetailCell, NavigationItem, SpacingView} from '../../widget'
 
 type Props = {
     data: Object,
-    onPress: Function,
+    onPressEdit: Function,
+    onPressSelect: Function,
 }
 
 
@@ -22,15 +23,15 @@ class AddressCell extends PureComponent<Props> {
         console.log("AddressCellData:",data);
         return(
             <View style={styles.cellcontainer}>
-                <View style={{flex:1}} >
+                <TouchableOpacity style={{flex:1}} onPress={() => this.props.onPressSelect()}>
                     <Text style={styles.text}>{data.address}</Text>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.text}>{data.name}</Text>
                         <Text style={styles.text}>{data.gender}</Text>
                         <Text style={styles.text}>{data.tel}</Text>
                     </View>
-                </View>
-                <TouchableOpacity  style={{alignSelf: 'center'}} onPress={() => this.props.onPress()}>
+                </TouchableOpacity>
+                <TouchableOpacity  style={{alignSelf: 'center'}} onPress={() => this.props.onPressEdit()}>
                     <Image source={require('../../img/public/icon_edit.png')} style={{width:25, height:25}}/>
                 </TouchableOpacity>
             </View>

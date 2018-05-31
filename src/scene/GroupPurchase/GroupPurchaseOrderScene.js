@@ -14,7 +14,7 @@ type Props = {
 }
 
 type State = {
-    data: Array<Object>,
+    addressInfo: Object,
 
 }
 
@@ -30,7 +30,12 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
         super(props)
 
         this.state = {
-
+            addressInfo: {
+                address: '三峡大学',
+                name: '余闻浩',
+                gender: '男士',
+                tel: '17671732097'
+            }
         }
     }
 
@@ -40,14 +45,26 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
 
             this.setState({refreshState: RefreshState.HeaderRefreshing})
 
-            let info = this.props.navigation.state.params.info
-            let response = await fetch(api.serverhost + "/order", {
+            let goodsinfo = this.props.navigation.state.params.info
+            let addressInfo = this.state.addressInfo
+            let orderInfo = {
+                goodsInfo: {
+                    id: goodsinfo.id,
+                    title:goodsinfo.title,
+                    subtitle: goodsinfo.subtitle,
+                    price: goodsinfo.price
+                },
+                addressInfo
+            }
+            let info = await JSON.stringify(orderInfo)
+            console.log(info)
+            let response = await fetch(api.serverhost + "/index/order", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                   },
-                  body: JSON.stringify(info)
+                  body: info
             })
             let json = await response.json()
 
@@ -65,19 +82,34 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => {this.props.navigation.navigate('Address')}}>
-                        <Text style={{fontSize: 20,margin:10,}}>选择收货地址</Text>
+                    <TouchableOpacity
+                        style={{flexDirection: 'row'}} 
+                        onPress={() => {
+                            this.props.navigation.navigate('Address',{
+                                callback: (data) => {
+                                    console.log("callback:",data);
+                                    this.setState({
+                                        addressInfo:data
+                                    })
+                                }
+                            })
+                        }}>
+                        <View style={{flex:1,paddingLeft:5}}>
+                            <Text style={styles.text}>{this.state.addressInfo.address}</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.text}>{this.state.addressInfo.name}</Text>
+                                <Text style={styles.text}>{this.state.addressInfo.gender}</Text>
+                                <Text style={styles.text}>{this.state.addressInfo.tel}</Text>
+                            </View>
+                        </View>
                         <Image style={{width:25, height:25, marginLeft: 180,alignSelf: 'center'}} source={require('../../img/public/icon_more.png')}/>
                     </TouchableOpacity>
                     <View style={{height:1,backgroundColor:color.border}}></View>
-                    {/* <TouchableOpacity>
-                        <Text style={{fontSize: 20,margin:10,alignSelf:'center'}}>选择收货时间</Text>
-                    </TouchableOpacity> */}
                     <Picker
                         mode={'dropdown'}>
                         <Picker.item label="选择收货时间：11:30" value='11:30'/>
-                        <Picker.item label="选择收货时间：11:30" value='11:30'/>
-                        <Picker.item label="选择收货时间：11:30" value='11:30'/>
+                        <Picker.item label="选择收货时间：12:30" value='12:30'/>
+                        <Picker.item label="选择收货时间：13:30" value='13:30'/>
                     </Picker>
                 </View>
                 <View style={styles.midContainer}>
@@ -108,7 +140,7 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
                 </View>
                 <View style={styles.bottomBar}>
                     <Text style={{flex:2,fontSize:20,textAlign:'right',alignSelf:'center',marginRight:30,color:'white',}}>总计：{info.price+3}</Text>
-                    <TouchableOpacity style={{flex:1,backgroundColor:color.orange}}>
+                    <TouchableOpacity style={{flex:1,backgroundColor:color.orange}} onPress={this.requestOrder}>
                         <Text style={{fontSize: 20,color:'black',textAlign:'center',marginTop: 13}}>提交订单</Text>
                     </TouchableOpacity>
                 </View>
@@ -156,6 +188,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height:50,
         backgroundColor: '#333333',
+    },
+    text: {
+        fontSize: 15,
+        color: 'black',
+        margin: 5,
     },
 })
 

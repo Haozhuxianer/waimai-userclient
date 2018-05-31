@@ -23,7 +23,7 @@ class AddressCell extends PureComponent<Props> {
         console.log("AddressCellData:",data);
         return(
             <View style={styles.cellcontainer}>
-                <TouchableOpacity style={{flex:1}} onPress={() => this.props.onPressSelect()}>
+                <TouchableOpacity style={{flex:1}} onPress={() => this.props.onPressSelect(data)}>
                     <Text style={styles.text}>{data.address}</Text>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={styles.text}>{data.name}</Text>

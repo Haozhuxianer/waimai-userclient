@@ -165,7 +165,7 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
-        initialRouteName: 'Address',
+        // initialRouteName: 'Address',
     }
 )
 

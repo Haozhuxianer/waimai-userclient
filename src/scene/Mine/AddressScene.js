@@ -52,7 +52,7 @@ class AddressScene extends PureComponent<Props,State>{
     }
 
     getDataFromRealm = async ()  =>{
-        Realm.open({schema: [model.AddressInfoScheme]})
+        await Realm.open({schema: [model.AddressInfoScheme]})
         .then(realm => {
             let data = realm.objects('AddressInfo')
             this.setState({dataList: data, refreshing: false})
@@ -84,7 +84,7 @@ class AddressScene extends PureComponent<Props,State>{
             <AddressCell
                 data={dataList.item}
                 onPressEdit={(data) => {alert('edite')}}
-                onPressSelect={() => {alert('selecter')}}
+                onPressSelect={(data) => {alert('selecter')}}
             />
         )
     }
@@ -100,7 +100,7 @@ class AddressScene extends PureComponent<Props,State>{
                 <FlatList
                     data={this.state.dataList}
                     renderItem={this.renderCell}
-                    keyExtractor={this._keyExtractor}
+                    // keyExtractor={this._keyExtractor}
                     ListHeaderComponent={this.renderHeader}
                     refreshing={this.state.refreshing}
                     onRefresh={this.getDataFromRealm}

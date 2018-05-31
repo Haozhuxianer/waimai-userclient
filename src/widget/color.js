@@ -9,4 +9,6 @@ export default {
     paper: '#f3f3f3',
 
     gray: '#979797',
+    gold: '#ffd700',
+    orange: '#ffa500'
 }

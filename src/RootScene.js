@@ -28,6 +28,7 @@ import AddressScene from './scene/Mine/AddressScene'
 import UpdateAddressScene from './scene/Mine/UpdateAddressScene'
 
 import OrderListScene from './scene/Order/OrderListScene'
+import OrderDetailsScene from './scene/Order/OrderDetailsScene'
 const lightContentScenes = ['Home', 'Mine']
 
 function getCurrentRouteName(navigationState: any) {
@@ -159,6 +160,7 @@ const Navigator = StackNavigator(
         Address: {screen: AddressScene},
         UAddress: {screen: UpdateAddressScene},
         OrderList: {screen: OrderListScene},
+        OrderDetails: {screen: OrderDetailsScene},
     },
     {
         navigationOptions: {
@@ -167,7 +169,7 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
-        // initialRouteName: 'OrderList',
+        initialRouteName: 'OrderList',
     }
 )
 

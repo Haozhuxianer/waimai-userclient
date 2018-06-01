@@ -72,7 +72,9 @@ class OrderListScene extends PureComponent<Props,State>{
         return(
             <OrderCell
                 data={info.item}
-                onPress={()=> {alert('hello')}}
+                onPress={()=> {this.props.navigation.navigate('OrderDetails', {
+                    info:info.item
+                })}}
             />
         )
     }

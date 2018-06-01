@@ -58,7 +58,7 @@ class GroupPurchaseOrderScene extends PureComponent<Props, State> {
             }
             let info = await JSON.stringify(orderInfo)
             console.log(info)
-            let response = await fetch(api.serverhost + "/index/order", {
+            let response = await fetch(api.serverhost + "/index/createorder", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

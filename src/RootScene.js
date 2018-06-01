@@ -27,6 +27,7 @@ import RegisterScene from './scene/common/RegisterScene'
 import AddressScene from './scene/Mine/AddressScene'
 import UpdateAddressScene from './scene/Mine/UpdateAddressScene'
 
+import OrderListScene from './scene/Order/OrderListScene'
 const lightContentScenes = ['Home', 'Mine']
 
 function getCurrentRouteName(navigationState: any) {
@@ -156,7 +157,8 @@ const Navigator = StackNavigator(
         Login: {screen: LoginScene},
         Register: {screen: RegisterScene},
         Address: {screen: AddressScene},
-        UAddress: {screen: UpdateAddressScene}
+        UAddress: {screen: UpdateAddressScene},
+        OrderList: {screen: OrderListScene},
     },
     {
         navigationOptions: {
@@ -165,7 +167,7 @@ const Navigator = StackNavigator(
             headerTintColor: '#333333',
             showIcon: true,
         },
-        // initialRouteName: 'Address',
+        initialRouteName: 'OrderList',
     }
 )
 

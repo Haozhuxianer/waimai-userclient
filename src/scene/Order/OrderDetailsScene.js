@@ -36,6 +36,30 @@ class OrderDetailsScene extends PureComponent<Props,State>{
             
         }
     }
+
+    confirmOrder = async () => {
+        let data = this.props.navigation.state.params.info;
+        let info = {
+            id: data.id,
+            status: 2
+        }
+        await fetch(api.serverhost+'/index/updateOrderStatus',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(info)
+        }).then((response)=> {
+            if(response.ok){
+                console.log('订单已确认')
+                return response.json()
+            }
+        }).then((text)=>{
+            alert('订单已确认')
+            this.props.navigation.goBack()
+        })
+    }
     
 
 
@@ -103,7 +127,7 @@ class OrderDetailsScene extends PureComponent<Props,State>{
                     </TouchableOpacity>
                     <View style={{height:1,width:30,backgroundColor:color.border,alignSelf:'center',margin:10}}></View>
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={this.confirmOrder}>
                     <Text style={{fontSize:20, fontWeight:'bold',color:'white',textAlign:'center',padding:5}}>确认订单</Text>
                 </TouchableOpacity>
             </View>

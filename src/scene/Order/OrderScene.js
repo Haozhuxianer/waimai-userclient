@@ -75,7 +75,7 @@ class OrderScene extends PureComponent<Props, State> {
     renderHeader = () => {
         return (
             <View style={styles.container}>
-                <DetailCell title='我的订单' subtitle='全部订单' style={{height: 38}} />
+                <DetailCell title='我的订单' subtitle='全部订单' style={{height: 38}} onPress={() =>{this.props.navigation.navigate('OrderList')}}/>
 
                 <View style={styles.itemContainer}>
                     <OrderMenuItem title='待付款' icon={require('../../img/order/order_tab_need_pay.png')} />
